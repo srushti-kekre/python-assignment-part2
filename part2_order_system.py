@@ -55,13 +55,13 @@ sales_log = {
 # We first get the categories
 categories = []
 for key,val in menu.items():
-    print(val)
+    #print(val)
     categories.append(val['category'])
 
 #removing duplicates by converting to set and then back again to list
 categories = set(categories)
 categories = list(categories)
-print(categories)
+#print(categories)
 
 #Start printing
 for category in categories:
@@ -72,7 +72,8 @@ for category in categories:
                 availablity_string = "[Available]"
             else:
                 availablity_string = "[Not Available]"
-            print(f"{key}   {val["price"]}  {availablity_string}")
+            #print(f"{key}   {val["price"]}  {availablity_string}")
+            print(f"{key}   {val['price']}  {availablity_string}")
     print(f"\n")
 
 """
@@ -202,7 +203,9 @@ print(f"{'='*36}")
 inventory_backup = copy.deepcopy(inventory)
 inventory["Paneer Tikka"]["stock"] = 2
 print(inventory)
+print(f"\n")
 print(inventory_backup)
+print(f"\n")
 
 inventory["Paneer Tikka"]["stock"] = 10
 #Restored back
@@ -225,7 +228,9 @@ for cart_item in cart:
         inventory[cart_item['item']]['stock'] = 0
         print(f"WARNING for {cart_item['item']}- The low stock is {low_quantity}")
 
+print(f"\n")
 print(inventory)
+print(f"\n")
 #3.3 After deduction, loop through inventory and print a Reorder Alert for every item whose stock is at or below its.
 
 for key,val in inventory.items():
@@ -235,12 +240,15 @@ for key,val in inventory.items():
 #3.4Print both inventory and inventory_backup at the end to confirm they differ — proving the deep copy protected the original.
 print(f"---------------Inventory----------------")
 print(inventory)
+print(f"\n")
 print(f"-----------------inventory Backup--------------")
 print(inventory_backup)
+print(f"\n")
 print(f"-------------------------------")
 print(f"they are not the same")
+print(f"\n")
 print(f"-------------------------------")
-
+print(f"\n")
 
 ############################################################################################
 #Task 4
@@ -257,6 +265,7 @@ print(f"The revenue per day is {revenue_per_day}")
 #4.2 Print the best-selling day (date with the highest total revenue).
 max_date = max(revenue_per_day, key=revenue_per_day.get)
 print(f"best selling day is {max_date}")
+print(f"\n")
 
 #4.3 Find the most ordered item — the item that appears in the greatest number of individual orders across all days.
 
@@ -272,6 +281,7 @@ for key,val in sales_log.items():
 print(sales_count)
 max_dish = max(sales_count, key=sales_count.get)
 print(f"best selling day is {max_dish}")
+print(f"\n")
 
 #4.4
 sales_log["2025-01-05"] = [
@@ -287,10 +297,10 @@ for key,val in sales_log.items():
     revenue_per_day[key] = total_per_day
 
 print(f"The revenue per day is {revenue_per_day}") 
-
+print(f"\n")
 max_date = max(revenue_per_day, key=revenue_per_day.get)
 print(f"best selling day is {max_date}")
-
+print(f"\n")
 
 # We will traverse through the entire data structure sales_log
 sales_count = {}
@@ -304,6 +314,7 @@ for key,val in sales_log.items():
 print(sales_count)
 max_dish = max(sales_count, key=sales_count.get)
 print(f"best selling day is {max_dish}")
+print(f"\n")
 
 #4.5 Using enumerate, print a numbered list of all orders across all dates (including the new day):
 for i, (date, orders) in enumerate(sales_log.items(), start=1):
